@@ -1,5 +1,8 @@
 package com.example.data.injection
 
+import com.example.common.buildconfig.BuildConfigDetails
+import com.example.data.dataaccessor.PokemonDataAccessor
+import com.example.data.dataaccessor.PokemonDataAccessorImpl
 import com.example.data.service.PokemonService
 import dagger.Module
 import dagger.Provides
@@ -11,7 +14,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
-//import com.example.data.BuildConfig
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -37,13 +39,14 @@ class NetworkModule {
     @Singleton
     fun provideOkHttpClient(
         interceptor: Interceptor,
-        httpLoggingInterceptor: HttpLoggingInterceptor
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        buildConfigDetails: BuildConfigDetails
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
-        /*if (BuildConfig.DEBUG) {
+        if (buildConfigDetails.buildType == "debug") {
             builder.addInterceptor(httpLoggingInterceptor)
             builder.addInterceptor(interceptor)
-        }*/
+        }
         return builder.build()
     }
 
@@ -61,4 +64,10 @@ class NetworkModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): PokemonService =
         retrofit.create(PokemonService::class.java)
+
+    @Provides
+    @Singleton
+    fun providePokemonDataProvider(pokemonService: PokemonService): PokemonDataAccessor {
+        return PokemonDataAccessorImpl(pokemonService)
+    }
 }
