@@ -1,6 +1,6 @@
 package com.example.data.injection
 
-import com.example.common.buildconfig.BuildConfigDetails
+import com.example.common.buildconfig.BuildConfigDetailsProvider
 import com.example.data.dataaccessor.PokemonDataAccessor
 import com.example.data.dataaccessor.PokemonDataAccessorImpl
 import com.example.data.service.PokemonService
@@ -40,13 +40,13 @@ class NetworkModule {
     fun provideOkHttpClient(
         interceptor: Interceptor,
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        //buildConfigDetails: BuildConfigDetails
+        buildConfigDetailsProvider: BuildConfigDetailsProvider
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
-        /*if (buildConfigDetails.buildType == "debug") {
+        if (buildConfigDetailsProvider.get().buildType == "debug") {
             builder.addInterceptor(httpLoggingInterceptor)
             builder.addInterceptor(interceptor)
-        }*/
+        }
         return builder.build()
     }
 
