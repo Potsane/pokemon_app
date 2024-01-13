@@ -40,13 +40,13 @@ class NetworkModule {
     fun provideOkHttpClient(
         interceptor: Interceptor,
         httpLoggingInterceptor: HttpLoggingInterceptor,
-        buildConfigDetails: BuildConfigDetails
+        //buildConfigDetails: BuildConfigDetails
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
-        if (buildConfigDetails.buildType == "debug") {
+        /*if (buildConfigDetails.buildType == "debug") {
             builder.addInterceptor(httpLoggingInterceptor)
             builder.addInterceptor(interceptor)
-        }
+        }*/
         return builder.build()
     }
 
@@ -54,7 +54,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://evening-bastion-32495.herokuapp.com")
+            .baseUrl("https://pokeapi.co/api/v2/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

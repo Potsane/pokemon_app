@@ -67,6 +67,8 @@ dependencies {
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
@@ -78,4 +80,5 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
 
     implementation(project(":core:common"))
+    implementation(project(":feature:pokemonlist"))
 }
