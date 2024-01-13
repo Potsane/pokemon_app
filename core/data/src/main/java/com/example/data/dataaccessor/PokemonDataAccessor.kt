@@ -14,7 +14,7 @@ class PokemonDataAccessorImpl @Inject constructor(
     private val pokemonService: PokemonService
 ) : PokemonDataAccessor {
     override suspend fun getPokemonList(): List<PokemonListDto>? {
-        return pokemonService.getPokemonList().body()
+        return pokemonService.getPokemonList().body()?.results
     }
 
     override suspend fun getPokemonDetails(id: String): PokemonDetailsDto? {
