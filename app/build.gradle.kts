@@ -80,5 +80,6 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
 
     implementation(project(":core:common"))
+    implementation(project(":core:ui"))
     implementation(project(":feature:pokemonlist"))
 }
