@@ -16,6 +16,7 @@ okhttp = "4.12.0"
 gson = "2.10.1"
 viewmodel-compose ="2.7.0"
 hilt-navigation-compose = "1.1.0"
+coil = "2.5.0"
 
 [libraries]
 
@@ -52,6 +53,11 @@ okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhtt
 #Gson
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+
+#Coil
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+#material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons-extended"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
