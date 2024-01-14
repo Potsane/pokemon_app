@@ -14,9 +14,10 @@ kotlinKsp = "1.9.0-1.0.13"
 retrofit = "2.9.0"
 okhttp = "4.12.0"
 gson = "2.10.1"
-viewmodel-compose ="2.7.0"
+viewmodel-compose = "2.7.0"
 hilt-navigation-compose = "1.1.0"
 coil = "2.5.0"
+palette ="1.0.0"
 
 [libraries]
 
@@ -37,7 +38,7 @@ ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview
 ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
-viewmodel-compose = {group = "androidx.lifecycle", name ="lifecycle-viewmodel-compose", version.ref = "viewmodel-compose" }
+viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodel-compose" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
 
 
@@ -55,7 +56,9 @@ converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ve
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 #Coil
-coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil"}
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+pallete = { group = "androidx.palette", name = "palette", version.ref = "palette" }
 #material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons-extended"}
 
 
