@@ -32,7 +32,7 @@ fun LoadingAnimation() {
 
     Box(
         modifier = Modifier
-            .size(48.dp)
+            .size(32.dp)
             .scale(progress)
             .alpha(1f - progress)
             .border(

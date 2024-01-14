@@ -5,14 +5,11 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Icon
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PokemonListScreenTopBar(
     searchQuery: String,
@@ -40,8 +38,8 @@ fun PokemonListScreenTopBar(
             style = MaterialTheme.typography.headlineMedium
         )
 
-        TextField(
-            value = searchQuery,
+        /*TextField(
+            value = "",
             modifier = Modifier.fillMaxWidth(),
             onValueChange = { onSearchQueryChanged(it) },
             colors = TextFieldDefaults.colors(
@@ -58,6 +56,6 @@ fun PokemonListScreenTopBar(
                 )
             },
             placeholder = { Text("search pokemon name") }
-        )
+        )*/
     }
 }
