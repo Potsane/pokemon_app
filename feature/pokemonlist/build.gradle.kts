@@ -50,10 +50,15 @@ dependencies{
     implementation(libs.viewmodel.compose)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
+    implementation(libs.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.navigation.compose)
 
     implementation(project(":core:data"))
+    implementation(project(":core:ui"))
 }
