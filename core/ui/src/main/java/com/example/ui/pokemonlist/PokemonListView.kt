@@ -43,16 +43,17 @@ import kotlinx.coroutines.withContext
 @Composable
 fun PokemonListView(
     pokemonList: List<Pokemon>,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCardClick: (Pokemon) -> Unit,
 ) {
     val context = LocalContext.current
     Column(
-        modifier = modifier.padding(top = 72.dp)
+        modifier = modifier
     ) {
         LazyVerticalGrid(
             modifier = Modifier
                 .background(color = Color.LightGray)
-                .padding(horizontal = 16.dp),
+                .padding(horizontal = 8.dp),
             columns = GridCells.Fixed(2)
         ) {
 
@@ -71,13 +72,11 @@ fun PokemonListView(
                     }
                 }
 
-
                 Card(
                     modifier = Modifier
                         .wrapContentHeight()
                         .padding(8.dp)
-                        .clickable {
-                        },
+                        .clickable { onCardClick(item) },
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Column(
@@ -118,7 +117,7 @@ fun PokemonListView(
 }
 
 fun getDominantColor(bitmap: Bitmap?): Color {
-   if (bitmap == null) return Color.Yellow
+    if (bitmap == null) return Color.Yellow
 
     val palette = Palette.from(bitmap).generate()
     val paletteValue = palette.lightMutedSwatch?.rgb

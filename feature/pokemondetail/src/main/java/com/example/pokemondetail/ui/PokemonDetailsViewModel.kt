@@ -18,6 +18,10 @@ class PokemonDetailsViewModel @Inject constructor(
     private val _pokemonDetails = MutableStateFlow<PokemonDetails?>(PokemonDetails())
     val pokemonDetails: StateFlow<PokemonDetails?> = _pokemonDetails
 
+    init {
+        fetchPokemonDetails("1")
+    }
+
     fun fetchPokemonDetails(id: String) {
         viewModelScope.launch {
             _pokemonDetails.value = pokemonDetailsRepository.getPokemonDetails(id)
