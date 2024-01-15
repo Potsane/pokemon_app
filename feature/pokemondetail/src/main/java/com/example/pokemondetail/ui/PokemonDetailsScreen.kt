@@ -43,11 +43,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.SubcomposeAsyncImage
+import com.example.ui.baseevents.UiEvents
 import com.example.ui.model.PokemonDetails
 import com.example.ui.model.PropertyInfo
 import com.example.ui.pokemonlist.LoadingAnimation
+import com.example.ui.progressindicator.ProgressIndicator
 import com.example.ui.topbar.Screen
 
 @SuppressLint("StateFlowValueCalledInComposition")
@@ -58,12 +61,18 @@ fun PokemonDetailsScreen(
     id: String?,
     pokemonDetailViewModel: PokemonDetailsViewModel = hiltViewModel(),
 ) {
+    val uiState = pokemonDetailViewModel.uiState.value
     val pokemonDetails = pokemonDetailViewModel.pokemonDetails.value
     val appBarBackground = color?.takeIf { it != 0 }?.let { Color(color = it) } ?: Color.Gray
 
     id?.let {
         pokemonDetailViewModel.fetchPokemonDetails(it)
     } ?: { /** show error**/ }
+
+    if (uiState is UiEvents.Loading) ProgressIndicator()
+    if (uiState is UiEvents.Error) {
+        /** show error**/
+    }
 
     Column(
         modifier = Modifier

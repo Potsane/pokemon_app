@@ -9,6 +9,10 @@ class PokemonDetailsRepositoryImpl @Inject constructor(
     private val pokemonDataAccessor: PokemonDataAccessor
 ) : PokemonDetailsRepository {
     override suspend fun getPokemonDetails(id : String): PokemonDetails? {
-        return pokemonDataAccessor.getPokemonDetails(id)?.toPokemonDetails()
+        return try {
+            pokemonDataAccessor.getPokemonDetails(id)?.toPokemonDetails()
+        }catch (e : Exception){
+            null
+        }
     }
 }

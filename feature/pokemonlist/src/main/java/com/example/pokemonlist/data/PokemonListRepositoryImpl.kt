@@ -7,5 +7,9 @@ import javax.inject.Inject
 class PokemonListRepositoryImpl @Inject constructor(
     private val pokemonDataAccessor: PokemonDataAccessor
 ) : PokemonListRepository {
-    override suspend fun getPokemonList() = pokemonDataAccessor.getPokemonList().toPokemonList()
+    override suspend fun getPokemonList() = try {
+        pokemonDataAccessor.getPokemonList().toPokemonList()
+    } catch (e: Exception) {
+        null
+    }
 }
