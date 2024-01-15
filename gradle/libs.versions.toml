@@ -17,7 +17,8 @@ gson = "2.10.1"
 viewmodel-compose = "2.7.0"
 hilt-navigation-compose = "1.1.0"
 coil = "2.5.0"
-palette ="1.0.0"
+palette = "1.0.0"
+navigationRuntimeKtx = "2.7.6"
 
 [libraries]
 
@@ -40,6 +41,7 @@ ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "viewmodel-compose" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 
 
 #Hilt
@@ -58,9 +60,9 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 #Coil
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
+#Pallete
 pallete = { group = "androidx.palette", name = "palette", version.ref = "palette" }
 #material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons-extended"}
-
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

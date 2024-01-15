@@ -42,7 +42,6 @@ android {
 }
 
 dependencies{
-
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
     implementation(libs.ui)
@@ -51,5 +50,5 @@ dependencies{
     implementation(libs.material3)
     implementation(libs.coil)
     implementation(libs.pallete)
-
+    implementation(libs.androidx.navigation.runtime.ktx)
 }
