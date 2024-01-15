@@ -51,7 +51,7 @@ android {
 }
 
 dependencies{
-
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.viewmodel.compose)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))

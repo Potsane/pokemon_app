@@ -1,12 +1,12 @@
 package com.example.pokemondetail.ui
 
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemondetail.domain.PokemonDetailsRepository
 import com.example.ui.model.PokemonDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,16 +15,14 @@ class PokemonDetailsViewModel @Inject constructor(
     private val pokemonDetailsRepository: PokemonDetailsRepository
 ) : ViewModel() {
 
-    private val _pokemonDetails = MutableStateFlow<PokemonDetails?>(PokemonDetails())
-    val pokemonDetails: StateFlow<PokemonDetails?> = _pokemonDetails
+    private val _pokemonDetails = mutableStateOf(PokemonDetails())
+    val pokemonDetails: State<PokemonDetails?> = _pokemonDetails
 
-    init {
-        fetchPokemonDetails("1")
-    }
-
-    fun fetchPokemonDetails(id: String) {
+    fun fetchPokemonDetails(pokemonId: String) {
         viewModelScope.launch {
-            _pokemonDetails.value = pokemonDetailsRepository.getPokemonDetails(id)
+            pokemonDetailsRepository.getPokemonDetails(pokemonId)?.let {
+                _pokemonDetails.value = it
+            }
         }
     }
 }

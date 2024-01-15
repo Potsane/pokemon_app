@@ -2,14 +2,13 @@ package com.example.pokemonapp.navigation
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.example.pokemondetail.ui.PokemonDetailsScreen
-import com.example.pokemondetail.ui.PokemonDetailsViewModel
 import com.example.pokemonlist.ui.PokemonListScreen
-import com.example.pokemonlist.ui.PokemonListViewModel
 import com.example.ui.topbar.AppTopBarState
 import com.example.ui.topbar.Screen
 
@@ -19,8 +18,6 @@ fun AppNavigationHost(
     navController: NavHostController,
     appBarState: AppTopBarState
 ) {
-    val pokemonListViewModel = hiltViewModel<PokemonListViewModel>()
-    val pokemonDetailViewModel = hiltViewModel<PokemonDetailsViewModel>()
     NavHost(
         navController = navController,
         startDestination = Screen.PokemonList.route
@@ -29,13 +26,22 @@ fun AppNavigationHost(
             PokemonListScreen(
                 navHostController = navController,
                 paddingValues = paddingValues,
-                pokemonListViewModel = pokemonListViewModel
             )
         }
-        composable(Screen.PokemonDetails.route) {
+        composable(
+            Screen.PokemonDetails.route,
+            arguments = listOf(
+                navArgument("id") { type = NavType.StringType },
+                navArgument("color") { type = NavType.IntType }
+            )
+        ) {
+
+            val id = it.arguments?.getString("id")
+            val backgroundColor = it.arguments?.getInt("color")
             PokemonDetailsScreen(
                 navHostController = navController,
-                pokemonDetailViewModel = pokemonDetailViewModel
+                id = id,
+                color = backgroundColor
             )
         }
     }

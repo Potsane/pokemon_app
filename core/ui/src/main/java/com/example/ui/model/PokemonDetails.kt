@@ -11,6 +11,7 @@ data class PokemonDetails(
 )
 
 data class PropertyInfo(
+    var key: Int = 0,
     var name: String,
     var url: String
 )

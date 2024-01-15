@@ -42,10 +42,16 @@ class AppTopBarState(
     val showSearchBar: Boolean
         get() = currentScreen?.showSearchBar ?: true
 
-    val title: String
+    var title: String
         get() = currentScreen?.title.orEmpty()
+        set(value) {
+            currentScreen?.title = value
+        }
 
-    val backgroundColor: Color
+    var backgroundColor: Color
         get() = currentScreen?.backgroundColor ?: Color(-4147000)
+        set(value) {
+            currentScreen?.backgroundColor = value
+        }
 
 }

@@ -19,21 +19,22 @@ fun PokemonDetailsDto.toPokemonDetails(): PokemonDetails {
 }
 
 private fun getAvatarUrl(id: String): String {
-    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png"
+    //return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png"
+    return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
 }
 
-private fun getStats(stats: List<Stat>): List<PropertyInfo> {
+private fun getStats(stats: List<Stat>?): List<PropertyInfo> {
     val uiStats = mutableListOf<PropertyInfo>()
-    stats.forEach {
-        uiStats.add(PropertyInfo(it.stat.name, it.stat.url))
+    stats?.forEach {
+        uiStats.add(PropertyInfo(key = it.baseStat, name = it.stat.name, url = it.stat.url))
     }
     return uiStats
 }
 
-private fun getTypes(types: List<Type>): List<PropertyInfo> {
+private fun getTypes(types: List<Type>?): List<PropertyInfo> {
     val uiTypes = mutableListOf<PropertyInfo>()
-    types.forEach {
-        uiTypes.add(PropertyInfo(it.type.name, it.type.url))
+    types?.forEach {
+        uiTypes.add(PropertyInfo(name = it.type.name, url = it.type.url))
     }
     return uiTypes
 }

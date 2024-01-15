@@ -68,7 +68,7 @@ fun PokemonListView(
                             .build()
                         val result = (loader.execute(request) as SuccessResult).drawable
                         val bitmap = (result as BitmapDrawable).bitmap
-                        backgroundColor = getDominantColor(bitmap)
+                        backgroundColor = getDominantColor(bitmap, item)
                     }
                 }
 
@@ -76,7 +76,9 @@ fun PokemonListView(
                     modifier = Modifier
                         .wrapContentHeight()
                         .padding(8.dp)
-                        .clickable { onCardClick(item) },
+                        .clickable {
+                            onCardClick(item)
+                        },
                     shape = RoundedCornerShape(8.dp)
                 ) {
                     Column(
@@ -116,11 +118,14 @@ fun PokemonListView(
     }
 }
 
-fun getDominantColor(bitmap: Bitmap?): Color {
+fun getDominantColor(bitmap: Bitmap?, item: Pokemon): Color {
     if (bitmap == null) return Color.Yellow
 
     val palette = Palette.from(bitmap).generate()
     val paletteValue = palette.lightMutedSwatch?.rgb
-    paletteValue?.let { return Color(it) }
+    paletteValue?.let {
+        item.backgroundColor = it
+        return Color(it)
+    }
     return Color.Yellow
 }
