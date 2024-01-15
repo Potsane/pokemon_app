@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.pokemonlist.ui.PokemonListScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.pokemonapp.navigation.AppScaffold
 import com.example.ui.theme.PokemonAppTheme
+import com.example.ui.topbar.rememberAppBarState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +24,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PokemonListScreen()
+                    //PokemonListScreen()
+                    val navController = rememberNavController()
+                    val appBarState = rememberAppBarState(navController)
+                    AppScaffold(navController, appBarState)
                 }
             }
         }
