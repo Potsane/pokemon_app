@@ -3,6 +3,7 @@ package com.example.pokemonlist.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokemonlist.domain.PokemonListRepository
+import com.example.ui.baseevents.UiEvents
 import com.example.ui.model.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +22,9 @@ class PokemonListViewModel @Inject constructor(
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery
 
+    private val _uiState: MutableStateFlow<UiEvents> = MutableStateFlow(UiEvents.Loading)
+    val uiState: StateFlow<Any> = _uiState
+
     init {
         fetchPokemonList()
     }
@@ -29,7 +33,12 @@ class PokemonListViewModel @Inject constructor(
 
     private fun fetchPokemonList() {
         viewModelScope.launch {
-            _pokemonList.value = pokemonListRepository.getPokemonList()
+            pokemonListRepository.getPokemonList()?.let {
+                _pokemonList.value = it
+                _uiState.value = UiEvents.Success
+            } ?: run {
+                _uiState.value = UiEvents.Error
+            }
         }
     }
 }

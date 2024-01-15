@@ -19,7 +19,6 @@ fun PokemonDetailsDto.toPokemonDetails(): PokemonDetails {
 }
 
 private fun getAvatarUrl(id: String): String {
-    //return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png"
     return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"
 }
 
