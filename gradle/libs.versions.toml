@@ -19,6 +19,8 @@ hilt-navigation-compose = "1.1.0"
 coil = "2.5.0"
 palette = "1.0.0"
 navigationRuntimeKtx = "2.7.6"
+kotlin-parcelize = "1.8.10"
+accompanist-coil = "0.7.0"
 
 [libraries]
 
@@ -59,6 +61,7 @@ gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 #Coil
 coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+accompanist-coil = { group = "com.google.accompanist", name = "accompanist-coil", version.ref = "accompanist-coil" }
 
 #Pallete
 pallete = { group = "androidx.palette", name = "palette", version.ref = "palette" }
@@ -72,4 +75,4 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 
 kotlinKsp = { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-
+kotlinParcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin-parcelize" }

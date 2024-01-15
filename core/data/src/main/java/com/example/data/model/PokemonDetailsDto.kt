@@ -1,5 +1,7 @@
 package com.example.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class PokemonDetailsDto(
     var id: String,
     var name: String,
@@ -10,6 +12,7 @@ data class PokemonDetailsDto(
 )
 
 data class Stat(
+    @SerializedName("base_stat")
     var baseStat: Int,
     var stat: BasePropertyInfo
 )

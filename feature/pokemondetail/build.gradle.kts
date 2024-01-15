@@ -44,6 +44,7 @@ android {
 }
 
 dependencies{
+    implementation(libs.hilt.navigation.compose)
     implementation(libs.viewmodel.compose)
     implementation(libs.activity.compose)
     implementation(platform(libs.compose.bom))
@@ -51,6 +52,8 @@ dependencies{
     implementation(libs.ui.graphics)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
+    implementation(libs.coil)
+    implementation(libs.accompanist.coil)
 
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
