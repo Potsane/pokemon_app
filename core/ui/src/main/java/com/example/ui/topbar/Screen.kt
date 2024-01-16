@@ -3,6 +3,7 @@ package com.example.ui.topbar
 sealed class Screen(val route: String) {
     open var title: String = ""
     open val showSearchBar: Boolean = true
+    open var onSearch: (query: String) -> Unit = {}
 
     data object PokemonList : Screen("pokemon_list") {
         override var title: String = "Pokemons"
