@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import com.example.ui.baseevents.UiEvents
 import com.example.ui.pokemonlist.PokemonListView
 import com.example.ui.progressindicator.ProgressIndicator
+import com.example.ui.topbar.Screen
 
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
@@ -25,7 +26,7 @@ fun PokemonListScreen(
 
     if (uiState is UiEvents.Loading) ProgressIndicator()
     if (uiState is UiEvents.Error) {
-        /** show error**/
+        navHostController.navigate(Screen.PokemonError.route)
     }
 
     PokemonListView(

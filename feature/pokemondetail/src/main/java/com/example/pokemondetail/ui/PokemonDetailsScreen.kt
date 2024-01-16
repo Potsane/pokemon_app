@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -67,12 +68,10 @@ fun PokemonDetailsScreen(
 
     id?.let {
         pokemonDetailViewModel.fetchPokemonDetails(it)
-    } ?: { /** show error**/ }
+    } ?: { navHostController.navigate(Screen.PokemonError.route) }
 
     if (uiState is UiEvents.Loading) ProgressIndicator()
-    if (uiState is UiEvents.Error) {
-        /** show error**/
-    }
+    if (uiState is UiEvents.Error) navHostController.navigate(Screen.PokemonError.route)
 
     Column(
         modifier = Modifier
@@ -96,9 +95,7 @@ fun PokemonDetailsScreen(
                 onClick = {
                     navHostController.navigate(Screen.PokemonList.route)
                 }
-            ) { Icon(Icons.Default.Home, contentDescription = null) }
-
-            // Text(text = "This is the current Pokemon")
+            ) { Icon(Icons.Default.ArrowBack, contentDescription = null) }
         }
 
         Box(

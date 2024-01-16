@@ -21,6 +21,9 @@ palette = "1.0.0"
 navigationRuntimeKtx = "2.7.6"
 kotlin-parcelize = "1.8.10"
 accompanist-coil = "0.7.0"
+appcompat = "1.6.1"
+material = "1.11.0"
+lottieVersion = "6.2.0"
 
 [libraries]
 
@@ -65,7 +68,13 @@ accompanist-coil = { group = "com.google.accompanist", name = "accompanist-coil"
 
 #Pallete
 pallete = { group = "androidx.palette", name = "palette", version.ref = "palette" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 #material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons-extended"}
+
+#Lottie
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottieVersion" }
+lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottieVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

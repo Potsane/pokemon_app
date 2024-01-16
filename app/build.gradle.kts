@@ -83,4 +83,5 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":feature:pokemonlist"))
     implementation(project(":feature:pokemondetail"))
+    implementation(project(":feature:pokemonerror"))
 }

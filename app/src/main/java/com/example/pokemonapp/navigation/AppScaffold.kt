@@ -18,8 +18,7 @@ fun AppScaffold(
     ) {
         AppNavigationHost(
             paddingValues = it,
-            navController = navHostController,
-            appBarState = appBarState,
+            navController = navHostController
         )
     }
 }

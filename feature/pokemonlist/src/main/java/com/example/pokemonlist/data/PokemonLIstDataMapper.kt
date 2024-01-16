@@ -3,9 +3,10 @@ package com.example.pokemonlist.data
 import com.example.data.model.PokemonListDto
 import com.example.ui.model.Pokemon
 
-fun List<PokemonListDto>?.toPokemonList(): List<Pokemon> {
+fun List<PokemonListDto>?.toPokemonList(): List<Pokemon>? {
+    if (this == null) return null
     val pokemonList = mutableListOf<Pokemon>()
-    this?.forEach {
+    this.forEach {
         val id = it.extractId()
         pokemonList.add(Pokemon(id, it.name, getAvatarUrl(id)))
     }
