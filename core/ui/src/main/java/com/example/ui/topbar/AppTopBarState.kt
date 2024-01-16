@@ -1,13 +1,9 @@
 package com.example.ui.topbar
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -30,28 +26,14 @@ class AppTopBarState(
             .launchIn(scope)
     }
 
-    var currentScreen by mutableStateOf<Screen?>(null)
-        private set
-
-    val leadingIcon: ImageVector
-        get() = currentScreen?.navigationIcon ?: Icons.Default.Home
-
-    val showLeadingIcon: Boolean
-        get() = currentScreen?.showLeadingIcon ?: false
+    private var currentScreen by mutableStateOf<Screen?>(null)
 
     val showSearchBar: Boolean
-        get() = currentScreen?.showSearchBar ?: true
+        get() = currentScreen?.showSearchBar ?: false
 
     var title: String
         get() = currentScreen?.title.orEmpty()
         set(value) {
             currentScreen?.title = value
         }
-
-    var backgroundColor: Color
-        get() = currentScreen?.backgroundColor ?: Color(-4147000)
-        set(value) {
-            currentScreen?.backgroundColor = value
-        }
-
 }

@@ -7,16 +7,15 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.mylibrary.ui.ErrorScreen
 import com.example.pokemondetail.ui.PokemonDetailsScreen
 import com.example.pokemonlist.ui.PokemonListScreen
-import com.example.ui.topbar.AppTopBarState
 import com.example.ui.topbar.Screen
 
 @Composable
 fun AppNavigationHost(
     paddingValues: PaddingValues,
-    navController: NavHostController,
-    appBarState: AppTopBarState
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,
@@ -28,6 +27,11 @@ fun AppNavigationHost(
                 paddingValues = paddingValues,
             )
         }
+        composable(Screen.PokemonError.route) {
+            ErrorScreen(
+                navHostController = navController
+            )
+        }
         composable(
             Screen.PokemonDetails.route,
             arguments = listOf(
@@ -35,7 +39,6 @@ fun AppNavigationHost(
                 navArgument("color") { type = NavType.IntType }
             )
         ) {
-
             val id = it.arguments?.getString("id")
             val backgroundColor = it.arguments?.getInt("color")
             PokemonDetailsScreen(

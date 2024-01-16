@@ -13,6 +13,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -43,6 +44,8 @@ class NetworkModule {
         buildConfigDetailsProvider: BuildConfigDetailsProvider
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
         if (buildConfigDetailsProvider.get().buildType == "debug") {
             builder.addInterceptor(httpLoggingInterceptor)
             builder.addInterceptor(interceptor)

@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.system.exitProcess
 
 @HiltViewModel
 class PokemonListViewModel @Inject constructor(
@@ -33,11 +34,12 @@ class PokemonListViewModel @Inject constructor(
 
     private fun fetchPokemonList() {
         viewModelScope.launch {
-            pokemonListRepository.getPokemonList()?.let {
-                _pokemonList.value = it
-                _uiState.value = UiEvents.Success
-            } ?: run {
+            val result = pokemonListRepository.getPokemonList()
+            if (result.isNullOrEmpty()){
                 _uiState.value = UiEvents.Error
+            }else{
+                _pokemonList.value = result
+                _uiState.value = UiEvents.Success
             }
         }
     }
