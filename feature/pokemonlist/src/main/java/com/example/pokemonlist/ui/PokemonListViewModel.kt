@@ -26,21 +26,33 @@ class PokemonListViewModel @Inject constructor(
     private val _uiState: MutableStateFlow<UiEvents> = MutableStateFlow(UiEvents.Loading)
     val uiState: StateFlow<Any> = _uiState
 
+    private var unfilteredList = listOf<Pokemon>()
+
     init {
         fetchPokemonList()
     }
 
-    fun updateQuery(query: String) = _searchQuery.apply { value = query }
+    fun updateQuery(query: String) = _searchQuery.apply {
+        value = query
+        updateUiList()
+    }
 
     private fun fetchPokemonList() {
         viewModelScope.launch {
             val result = pokemonListRepository.getPokemonList()
-            if (result.isNullOrEmpty()){
+            if (result.isNullOrEmpty()) {
                 _uiState.value = UiEvents.Error
-            }else{
-                _pokemonList.value = result
+            } else {
+                unfilteredList = result
                 _uiState.value = UiEvents.Success
+                updateUiList()
             }
+        }
+    }
+
+    private fun updateUiList() {
+        _pokemonList.value = unfilteredList.filter {
+            it.name.contains(searchQuery.value)
         }
     }
 }
