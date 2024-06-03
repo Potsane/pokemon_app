@@ -21,7 +21,7 @@ palette = "1.0.0"
 navigationRuntimeKtx = "2.7.7"
 kotlin-parcelize = "1.8.10"
 accompanist-coil = "0.7.0"
-appcompat = "1.6.1"
+appcompat = "1.7.0"
 material = "1.11.0"
 lottieVersion = "6.2.0"
 
