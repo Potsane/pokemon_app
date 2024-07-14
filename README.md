@@ -1,5 +1,5 @@
 # Pokemon App
-This is Pokem application, made with Jetpack Compose, Coroutines, Flow, Hilt, and Material Desing and follows a multi-module MVVM Architecture. It shows a list of the first 100 Pokemon elements, the ability to search and the Pokemon details screen. 
+This is Pokemon application, made with Jetpack Compose, Coroutines, Flow, Hilt, and Material Desing and follows a multi-module MVVM Architecture. It shows a list of the first 100 Pokemon elements, the ability to search and the Pokemon details screen. 
 
 ## API 
 ```
@@ -7,7 +7,7 @@ https://pokeapi.co/api/v2/
 ```
 
 ## Artchitecture
-The application follows Google’s Layered architecture design [guideline](https://developer.android.com/topic/architecture). The app's overall architecture comprises three layers: the UI, Domain Layer, and Data layers. 
+The application follows Google’s Layered architecture design [guideline](https://developer.android.com/topic/architecture). The app's overall architecture comprises of three layers: the UI, Domain Layer, and Data layers. 
 Each of these has different responsibilities. 
 
 <img width="878" alt="Screenshot 2024-01-16 at 13 05 06" src="https://github.com/Potsane/pokemon_app/assets/7416651/327baccf-fc41-4768-931e-4a2f7522e273">
